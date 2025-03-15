@@ -1,0 +1,67 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #ffffff, #ee3f3f); /* Gradient background */
+    color: #333; /* Text color */
+}
+/* Header styling */
+header {
+    position: relative; /* Position relative to position contact info */
+    padding: 20px 10px;
+    background: #f7f6f6; /* Light background color */
+    color: rgb(11, 0, 0); /* Dark text color for the header */
+}
+/* Logo styling */
+.logo {
+    display: block;
+    margin: 0 auto; /* Center the logo */
+    width: 80px; /* Logo size */
+}
+/* Contact information styling (email and helpline) */
+.contact {
+    position: absolute;
+    font-size: 12px; /* Small font size */
+    color: rgb(4, 0, 0); /* Dark text color */
+    font-weight: bold; /* Make text bold */
+}
+.email {
+    top: 10px; /* Position from the top */
+    left: 10px; /* Position to the left */
+}
+.helpline {
+    top: 10px; /* Position from the top */
+    right: 10px; /* Position to the right */
+}
+/* Feature section styling */
+.feature {
+    text-align: center; /* Center-align content */
+    padding: 30px; /* Add spacing inside the section */
+    margin: 20px auto; /* Center the section on the page */
+    max-width: 600px; /* Limit the width */
+    border-radius: 15px; /* Rounded corners */
+    background: white; /* White background for contrast */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+/* Links in the feature sections */
+.feature a {
+    text-decoration: none; /* Remove underline */
+    color: #b30000; /* Red link color */
+    font-weight: bold; /* Bold links */
+}
+/* Banner section styling */
+.banners {
+    display: grid; /* Use a grid layout */
+    grid-template-columns: repeat(2, 1fr); /* 2 banners per row */
+    gap: 20px; /* Space between banners */
+    padding: 20px;
+    max-width: 1200px; /* Maximum width of the section */
+    margin: 0 auto; /* Center the banners */
+}
+/* Individual banner styling */
+.banner img {
+    width: 100%; /* Banner images take full width */
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect for images */
+}
