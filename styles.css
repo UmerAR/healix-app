@@ -59,12 +59,7 @@ header {
     max-width: 1200px; /* Maximum width of the section */
     margin: 0 auto; /* Center the banners */
 }
-/* Individual banner styling */
-.banner img {
-    width: 100%; /* Banner images take full width */
-    border-radius: 10px; /* Rounded corners for images */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect for images */
-}
+
 
 .slider-wrapper {
 	position: relative;
@@ -85,7 +80,7 @@ header {
 .slider img {
     flex: 1 0 100%;
     scroll-snap-align: start;
-    object-fit: cover;
+    object-fit: contain; /* Ensure the entire image fits within the slider */
 }
 
 .slider-nav {
