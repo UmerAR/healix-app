@@ -10,7 +10,7 @@ body {
 header {
     position: relative; /* Position relative to position contact info */
     padding: 20px 10px;
-    background: #f7f6f6; /* Light background color */
+    background: #f6f6f7; /* Light background color */
     color: rgb(11, 0, 0); /* Dark text color for the header */
 }
 /* Logo styling */
@@ -34,8 +34,8 @@ header {
     top: 10px; /* Position from the top */
     right: 10px; /* Position to the right */
 }
-/* Feature section styling */
-.feature {
+
+.macroBmi {
     text-align: center; /* Center-align content */
     padding: 30px; /* Add spacing inside the section */
     margin: 20px auto; /* Center the section on the page */
@@ -44,24 +44,13 @@ header {
     background: white; /* White background for contrast */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
 }
-/* Links in the feature sections */
-.feature a {
-    text-decoration: none; /* Remove underline */
-    color: #b30000; /* Red link color */
-    font-weight: bold; /* Bold links */
-}
-/* Banner section styling */
-.banners {
-    display: grid; /* Use a grid layout */
-    grid-template-columns: repeat(2, 1fr); /* 2 banners per row */
-    gap: 20px; /* Space between banners */
-    padding: 20px;
-    max-width: 1200px; /* Maximum width of the section */
-    margin: 0 auto; /* Center the banners */
-}
-/* Individual banner styling */
-.banner img {
-    width: 100%; /* Banner images take full width */
-    border-radius: 10px; /* Rounded corners for images */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect for images */
+
+form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+    gap: 0.5rem;
 }

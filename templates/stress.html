@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stress.css') }}">
+{% endblock %}
+
+{% block body %} 
+
+<div class="StressScore">
+    <h2>Stress Score</h2>
+    <form id="stressForm">
+        <label>Age</label>
+        <input type="number" min="1" max="99" id="age" name="age" placeholder="Enter your age" required>
+        <label>Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <label>Relationship Status</label>
+        <select id="relationship_status" name="relationship_status" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Single">Single</option>
+            <option value="In a Relationship">In a Relationship</option>
+            <option value="Married">Married</option>
+        </select>
+        <label>Extracurricular Involvement</label>
+        <select id="extracurricular_involvement" name="extracurricular_involvement" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+        </select>
+        <label>Financial Stress</label>
+        <select id="financial_stress" name="financial_stress" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="0">0 (none)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (high)</option>
+        </select>
+        <label>Diet Quality</label>
+        <select id="diet_quality" name="diet_quality" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Poor">Poor</option>
+            <option value="Average">Average</option>
+            <option value="Good">Good</option>
+        </select>
+        <label>Physical Activity</label>
+        <select id="physical_activity" name="physical_activity" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+        </select>
+        <label>Sleep Quality</label>
+        <select id="sleep_quality" name="sleep_quality" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Poor">Poor</option>
+            <option value="Average">Average</option>
+            <option value="Good">Good</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    {% if stress_score is not none %}
+        <h3>Predicted Stress Score: {{ stress_score }}</h3>
+        <h4>Stress Level: {{ stress_level }}</h4>
+        <h4>Anxiety Score: {{ anxiety_score }}</h4>
+        <h4>Depression Score: {{ depression_score }}</h4>
+    {% endif %}
+</div>
+<script>
+    document.getElementById("stressForm").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Stop the default page reload
+    
+        let formData = new FormData(this);
+    
+        let response = await fetch("/stress", { 
+            method: "POST", 
+            body: formData 
+        });
+    
+        let result = await response.text();  // Expecting JSON from Flask
+        document.open();
+        document.write(result);
+        document.close();
+    });
+</script>
+{% endblock %}

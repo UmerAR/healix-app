@@ -1,5 +1,4 @@
 import pandas as pd
-from scipy.stats import gmean
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -40,41 +39,3 @@ for target in target_columns:
 joblib.dump(models, "mental_health_models.pkl")
 joblib.dump(target_encoders, "target_encoders.pkl")
 joblib.dump(label_encoders, "feature_encoders.pkl")
-
-def get_user_input():
-    user_data = {}
-    print("\nAnswer the following questions:")
-
-    for question in question_columns:
-        if question in categorical_cols:  # Categorical features
-            options = list(label_encoders[question].classes_)
-            print(f"{question} options: {options}")
-            answer = input(f"Enter your choice for {question}: ")
-            user_data[question] = label_encoders[question].transform([answer])[0]
-        else:  # Numerical features
-            user_data[question] = float(input(f"{question}: "))
-
-    return pd.DataFrame([user_data])
-
-# Load trained models and encoders
-models = joblib.load("mental_health_models.pkl")
-target_encoders = joblib.load("target_encoders.pkl")
-label_encoders = joblib.load("feature_encoders.pkl")
-
-# Get user responses
-user_df = get_user_input()
-
-predictions = {}
-for target in target_columns:
-    model = models[target]
-    predicted_value = model.predict(user_df)[0]
-    predictions[target] = target_encoders[target].inverse_transform([predicted_value])[0]
-
-geomean_value = gmean([target_encoders[target].transform([predictions[target]])[0] + 1 for target in target_columns]) - 1  # Adjust for non-zero values
-gmeanVal = geomean_value * 20
-print("\nPredicted Mental Health Levels:")
-for target, value in predictions.items():
-    print(f"{target}: {value}")
-
-print(f"\nStress Score: {gmeanVal:.2f}")
-

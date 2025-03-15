@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %} 
+    <!-- Feature section -->
+    <div class="feature">
+        <h2>AI Chatbot</h2>
+        <p><a href="{{ url_for('chatbot') }}">Go to the AI Chatbot</a></p> <!-- Link to the chatbot page -->
+    </div>
+    <div class="feature">
+        <h2>Macro Calculator & BMI</h2>
+        <p><a href="{{ url_for('macros') }}">Go to the Macro Calculator & BMI</a></p> <!-- Link to the macro calculator page -->
+    </div>
+    <div class="feature">
+        <h2>Stress Indicator</h2>
+        <p><a href="{{ url_for('stress') }}">Go to the Stress Indicator</a></p> <!-- Link to the stress indicator page -->
+    </div>
+{% endblock %}

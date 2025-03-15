@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/macro.css') }}">
+{% endblock %}
+
+{% block body %} 
+<div class="macroBmi">
+    <h2>Calculate Macros and BMI</h2>
+    <form id="macroBmiForm" action="/macros" method="POST">
+        <label>Age</label>
+        <input type="number" min="1" max="99" id="age" name="age" placeholder="Enter your age" required>
+        <label>Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <label>Height (cm)</label>
+        <input type="number" id="height" name="height" placeholder="Enter your height (cm)" required>
+        <label>Weight (kg)</label>
+        <input type="number" id="weight" name="weight" placeholder="Enter your weight (kg)" required>
+        <label>Activity</label>
+        <select id="activity" name="activity" required>
+			<option value="1" >Basal Metabolic Rate (BMR)</option>
+			<option value="1.2" >Sedentary: little or no exercise</option>
+			<option value="1.375" >Light: exercise 1-3 times/week</option>
+			<option value="1.465" selected>Moderate: exercise 4-5 times/week</option>
+			<option value="1.55" >Active: daily exercise or intense exercise 3-4 times/week</option>
+			<option value="1.725" >Very Active: intense exercise 6-7 times/week</option>
+			<option value="1.9" >Extra Active: very intense exercise daily, or physical job</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    {% if bmi is not none %}
+        <h3>bmi: {{ bmi }}</h3>
+        <h3>category: {{ category }}</h3>
+        <h3>Total calories to maintain current weight: {{ calories }}</h3>
+    {% endif %}
+    <ul style="margin-top:0px;margin-left:-20px;">
+        <li class="smalltext"><b>Exercise:</b> 15-30 minutes of elevated heart rate activity.</li>
+        <li class="smalltext"><b>Intense exercise:</b> 45-120 minutes of elevated heart rate activity.</li>
+        <li class="smalltext"><b>Very intense exercise:</b> 2+ hours of elevated heart rate activity.</li>
+    </ul>
+</div>
+<script>
+    document.getElementById("macroBmiForm").addEventListener("submit", async function(event) {
+        event.preventDefault();  // Prevent page reload
+    
+        let formData = new FormData(this);
+    
+        let response = await fetch("/macros", {
+            method: "POST",
+            body: formData
+        });
+    
+        let data = await response.text();
+        document.open();
+        document.write(data);
+        document.close();
+    });
+    </script>
+{% endblock %}

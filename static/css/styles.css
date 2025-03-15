@@ -10,7 +10,7 @@ body {
 header {
     position: relative; /* Position relative to position contact info */
     padding: 20px 10px;
-    background: #f7f6f6; /* Light background color */
+    background: #f6f6f7; /* Light background color */
     color: rgb(11, 0, 0); /* Dark text color for the header */
 }
 /* Logo styling */
@@ -33,14 +33,4 @@ header {
 .helpline {
     top: 10px; /* Position from the top */
     right: 10px; /* Position to the right */
-}
-/* Feature section styling */
-.StressScore {
-    text-align: center; /* Center-align content */
-    padding: 30px; /* Add spacing inside the section */
-    margin: 20px auto; /* Center the section on the page */
-    max-width: 600px; /* Limit the width */
-    border-radius: 15px; /* Rounded corners */
-    background: white; /* White background for contrast */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
 }
