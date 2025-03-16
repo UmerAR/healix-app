@@ -4,7 +4,7 @@ import joblib
 from scipy.stats import gmean
 import google.generativeai as genai
 
-API_KEY = "AIzaSyCGoxKjw47NkmHY0VSycodPnMNQN6rn9Xk"
+API_KEY = ""
 
 sys_instruct = "You are a medical proffesional, specialising in mental health "
 genai.configure(api_key=API_KEY)
