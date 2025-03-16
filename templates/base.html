@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healix - Your Wellness Hub</title>
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index')}}"><img src="{{ url_for('static', filename='imgs/healix-logo.png')}}" alt="Healix Logo" class="logo"></a> <!-- Logo -->
+        <div class="contact email"><strong>Email:</strong> teamhealix@gmail.com</div> <!-- Email on top left -->
+        <div class="contact helpline"><strong>Helpline:</strong> +971 56 492 9559 (24/7)</div> <!-- Helpline on top right -->
+    </header>
+
+    {% block body %} {% endblock %}
+</body>
+</html>
