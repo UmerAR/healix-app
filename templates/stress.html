@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %} 
-
+<div class="form-container">
 <div class="StressScore">
     <h2>Stress Score</h2>
     <form id="stressForm">
@@ -66,11 +66,12 @@
         <button type="submit">Submit</button>
     </form>
     {% if stress_score is not none %}
-        <h3>Predicted Stress Score: {{ stress_score }}</h3>
+        <h3>Stress Score: {{ stress_score }}</h3>
         <h4>Stress Level: {{ stress_level }}</h4>
         <h4>Anxiety Score: {{ anxiety_score }}</h4>
         <h4>Depression Score: {{ depression_score }}</h4>
     {% endif %}
+</div>
 </div>
 <script>
     document.getElementById("stressForm").addEventListener("submit", async function(event) {

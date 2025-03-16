@@ -2,6 +2,14 @@ from flask import Flask, render_template, request
 import pandas as pd
 import joblib
 from scipy.stats import gmean
+import google.generativeai as genai
+
+API_KEY = "AIzaSyCGoxKjw47NkmHY0VSycodPnMNQN6rn9Xk"
+
+sys_instruct = "You are a medical proffesional, specialising in mental health "
+genai.configure(api_key=API_KEY)
+
+model = genai.GenerativeModel("gemini-2.0-flash", system_instruction=sys_instruct)
 
 app = Flask(__name__)
 
@@ -17,9 +25,30 @@ target_columns  = ['Stress_Level', 'Depression_Score', 'Anxiety_Score']
 def index():
     return render_template('index.html')
 
-@app.route('/chatbot')
+@app.route('/chatbot', methods=["GET", "POST"])
 def chatbot():
-    return render_template('chatbot.html')
+    response = None
+    user_prompt = None
+    if request.method == 'POST':
+        try:
+            user_prompt = request.form["message"]
+            
+            prompt = (
+                f'You are a compassionate mental health assistant. ',
+                f"A user said: \"{user_prompt}\"",
+                f'Respond in a conversational manner, offering empathetic support, active listening, and gentle advice to help improve their mental wellbeing. '
+                f"Maintain a friendly tone and help the user out with their problems."
+            )
+            response = model.generate_content(prompt).text
+
+        except Exception as e:
+            print(f'error: {e}')
+
+    return render_template(
+        'chatbot.html',
+        response=response,
+        user_prompt=user_prompt
+    )
 
 @app.route('/macros', methods=["GET", "POST"])
 def macros():

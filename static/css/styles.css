@@ -10,7 +10,7 @@ body {
 header {
     position: relative; /* Position relative to position contact info */
     padding: 20px 10px;
-    background: #f6f6f7; /* Light background color */
+    background: #f7f6f6; /* Light background color */
     color: rgb(11, 0, 0); /* Dark text color for the header */
 }
 /* Logo styling */
@@ -34,3 +34,103 @@ header {
     top: 10px; /* Position from the top */
     right: 10px; /* Position to the right */
 }
+/* Feature section styling */
+.feature {
+    text-align: center; /* Center-align content */
+    padding: 30px; /* Add spacing inside the section */
+    margin: 20px auto; /* Center the section on the page */
+    max-width: 600px; /* Limit the width */
+    border-radius: 15px; /* Rounded corners */
+    background: white; /* White background for contrast */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+/* Links in the feature sections */
+.feature a {
+    text-decoration: none; /* Remove underline */
+    color: #b30000; /* Red link color */
+    font-weight: bold; /* Bold links */
+}
+
+
+.slider-wrapper {
+	position: relative;
+	max-width: 48rem;
+	margin: 0 auto;
+    margin-top: 1rem;
+    aspect-ratio: 16/9;
+    overflow: hidden; /* Hide horizontal scrollbar */
+    border-radius: 0.75rem; /* Slightly more rounded */
+}
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+.slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover; /* Ensure the image fills the slider without distortion */
+    max-width: 48rem;
+    height: 100%; /* Maintain aspect ratio */
+}
+
+.slider-nav {
+    display: flex;
+    column-gap: 0.75rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider-nav a {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: rgb(98, 98, 98);
+    transition: opacity ease 250ms, transform ease 250ms;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    opacity: 0.5;
+}
+
+.slider-nav a.active {
+    width: 1rem;
+    height: 1rem;
+    background-color: black; /* Active dot is larger and darker */
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Left & Right arrows */
+.slider-wrapper .prev, .slider-wrapper .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.slider-wrapper .prev:hover, .slider-wrapper .next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-wrapper .prev { left: 10px; }
+.slider-wrapper .next { right: 10px; }

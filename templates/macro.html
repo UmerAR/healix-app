@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %} 
+<div class="form-container">
 <div class="macroBmi">
     <h2>Calculate Macros and BMI</h2>
     <form id="macroBmiForm" action="/macros" method="POST">
@@ -43,6 +44,7 @@
         <li class="smalltext"><b>Intense exercise:</b> 45-120 minutes of elevated heart rate activity.</li>
         <li class="smalltext"><b>Very intense exercise:</b> 2+ hours of elevated heart rate activity.</li>
     </ul>
+</div>
 </div>
 <script>
     document.getElementById("macroBmiForm").addEventListener("submit", async function(event) {

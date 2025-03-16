@@ -5,5 +5,39 @@
 {% endblock %}
 
 {% block body %} 
+<main>
+    
+    <div class="chat">
+        <h1>AI Chatbot</h1>
+        <div class="form-container">
+            <form id="chatForm">
+                <div class="user-input">
+                    {% if user_prompt %}<p><b>You:</b> {{ user_prompt }}</p>{% endif %}
+                </div>
+                <div class="message-box" id="chat-box">
+                    {% if response %}<p><b>Chatbot:</b> {{ response }}</p>{% endif %}
+                </div>
+                <input type="text" id="message" name="message" placeholder="Type a message..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</main>
+<script>
+document.getElementById("chatForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Stop the default page reload
 
+    let formData = new FormData(this);
+
+    let response = await fetch("/chatbot", { 
+        method: "POST", 
+        body: formData 
+    });
+
+    let result = await response.text();  // Expecting JSON from Flask
+    document.open();
+    document.write(result);
+    document.close();
+});
+</script>
 {% endblock %}
